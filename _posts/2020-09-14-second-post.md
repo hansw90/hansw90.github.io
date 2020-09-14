@@ -36,7 +36,7 @@ xml에선 특수문자를 Excape 문자처리를 해줘야 한다고 한다.
 
 처리 방법은 아래와 같다.
 XML 에서 엔터나 & 와 같은 특수문자를 사용할 때는 아래와 같이 쓴다.
-
+~~~
 1. 공백문자.  
 수평 탭 : 09  
 line-feed : 0A  
@@ -50,7 +50,7 @@ ASCII space : 90
 - ‘ : &apos;  
 - ” : &quot;  
 - 엔터 : &#10;  
-
+~~~
 ### 해결
 ~~~xml
 <property name="url" value="jdbc:mysql://URL주소:포트번호/DB명?allowMultiQueries=true&amp;useAffectedRows=true "/>
