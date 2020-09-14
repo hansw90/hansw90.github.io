@@ -31,9 +31,27 @@ db.properties.url을 설정하는 부분에서 두개 이상의 옵션을 줄때
 <property name="url" value="jdbc:mysql://URL주소:포트번호/DB명?allowMultiQueries=true&useAffectedRows=true "/>
 ~~~
 
-& and 이 부분이 에러의 주 원인이였다.
-xml에선 특수문자를 Excape 문자처리를 해줘야 한다.
+&&&& __and!!__ 이 부분이 에러의 주 원인이였다.
+xml에선 특수문자를 Excape 문자처리를 해줘야 한다고 한다.
 
 처리 방법은 아래와 같다.
+XML 에서 엔터나 & 와 같은 특수문자를 사용할 때는 아래와 같이 쓴다.
 
+1. 공백문자.  
+수평 탭 : 09  
+line-feed : 0A  
+carrage-return: 0D  
+ASCII space : 90  
 
+2. Escape 문자  
+& : &amp;  
+< : &lt;  
+> : &gt;  
+‘ : &apos;  
+” : &quot;  
+엔터 : &#10;  
+
+### 해결
+~~~xml
+<property name="url" value="jdbc:mysql://URL주소:포트번호/DB명?allowMultiQueries=true&amp;useAffectedRows=true "/>
+~~~
