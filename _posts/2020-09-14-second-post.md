@@ -44,12 +44,12 @@ carrage-return: 0D
 ASCII space : 90  
 
 2. Escape 문자  
-& : &amp;  
-< : &lt;  
-> : &gt;  
-‘ : &apos;  
-” : &quot;  
-엔터 : &#10;  
+- & : &amp;  
+- < : &lt;  
+- > : &gt;  
+- ‘ : &apos;  
+- ” : &quot;  
+- 엔터 : &#10;  
 
 ### 해결
 ~~~xml
