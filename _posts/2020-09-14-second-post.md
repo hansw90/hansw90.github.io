@@ -9,7 +9,7 @@ categories: STRING.XML안에 있는
 db.properties.url을 설정하는 부분에서 두개 이상의 옵션을 줄때 에러가 발생하였다
 사실 보안상의 이유로 xml안에 db의 정보를 바로 적는것 자체가 에러이지만 단순 테스트를 돌리려 만들었던 모델이라 에러를 만나고 당황하였다,
 
-​```
+​```xml
 <properties resource="db.properties"></properties>
 <!-- 원래는 properties 태그를 사용하여 보안상 비공유 되야할 소스들을 분리한다. resource 안에 소스가 들어있는 경로 를 설정해준다.   -->
 
@@ -19,7 +19,6 @@ db.properties.url을 설정하는 부분에서 두개 이상의 옵션을 줄때
 <property name="username" value="${db.username}"/>
 <property name="password" value="${db.password}"/>
 
-------------------------------------------------------------
 <!-- db.properties의 경로를통해 아래와 같이 가져오는것이 맞지만, 저는 아래와 같이 작성하였습니다. -->
 <property name="driver" value="com.mysql.jdbc.Driver"/>
 <property name="url" value="jdbc:mysql://URL주소:포트번호/DB명?allowMultiQueries=true&useAffectedRows=true "/>
@@ -28,7 +27,7 @@ db.properties.url을 설정하는 부분에서 두개 이상의 옵션을 줄때
 ​```
 
 그런데 여기서 이상한 애러가 발생한다.
-​```
+​```xml
 에러 발생부분
 <property name="url" value="jdbc:mysql://URL주소:포트번호/DB명?allowMultiQueries=true&useAffectedRows=true "/>
 ​```
