@@ -2,7 +2,7 @@
 ---
 title: 2일차 오늘의 삽질. 지금까지 내가 하고 있던 일과, 대용량 데이터 synchronization 작업
 date: 2020-09-15 22:42
-categories: DB
+categories: Database
 ---
 
 
