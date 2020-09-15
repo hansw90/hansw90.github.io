@@ -1,7 +1,7 @@
 ---
 title: "오늘의 삽질 1. xml Excape 문자 처리 (200914)"
 date: 2020-09-14- 22:54:00 -0000
-categories: STRING.XML안에 있는 
+categories: xml
 
 ---
 제대로 된?? 첫글을 적어본다,,
