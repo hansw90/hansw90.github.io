@@ -1,8 +1,8 @@
-
 ---
-title: "2일차 오늘의 삽질. 지금까지 내가 하고 있던 일과, 대용량 데이터 synchronization 작업"
-date: 2020-09-15 22:42 23:08:00 -0000
-categories: Database
+title: "오늘의 삽질 2. 지금까지 내가 하고 있던 일과, 대용량 데이터 synchronization 작업"
+date: 2020-09-14- 22:54:00 -0000
+categories: STRING.XML안에 있는 
+
 ---
 
 
@@ -24,5 +24,5 @@ categories: Database
 
 모쪼록,, migration작업은 이렇게 완료하였지만, 이 데이터를 이제 일정시간 마다 동기화를 해야하는 문제가 발생하였다,,
 
-Unit TEst하기도 빡센 상황 ㅠㅠ 아직까지도 내가 하고 있는 일이다.
+Unit Test하기도 빡센 상황,,, ㅠㅠ 지금 아직까지도 내가 하고 있는 일이다.
 
