@@ -13,6 +13,6 @@ categories: spring
 그렇다고 SLEEP을 해서 하면 팀장님한테 혼날것 같아서, Spring Quartz를 이용해 만들어 보기로 결정하였다. 
 
 #### 참고 문서 
-[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)
+[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)  
 [# Scheduling in Spring with Quartz 코드 설명](https://www.baeldung.com/spring-quartz-schedule)
 
