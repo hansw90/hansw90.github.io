@@ -61,7 +61,9 @@ public class SampleJob implements Job{
 		- __SimpleTrigger__
 			- 특정 시간에 Job을 수행할 때 사용되며 반복 횟수와 실행 간격을 조정할 수 있습니다.
 		- __CronTrigger__
-			- cron표현식으로 Trigger를 정의 합니다.
+			- cron표현식으로 Trigger를 정의 합니다.  
+
+
 ```java
 @Bean
 public SimpleTriggerFactoryBean trigger(JobDetail job) {
