@@ -11,8 +11,68 @@ categories: spring
 그렇지만 오늘은 에러를 다루지 않고 Quartz job 에 대해 알아보려 한다.
 지금 하는일이 동기화 작업이다 보니, 시간 또는 주기적으로 JOB을 실행해야될 필요가 있었다. 
 그렇다고 SLEEP을 해서 하면 팀장님한테 혼날것 같아서, Spring Quartz를 이용해 만들어 보기로 결정하였다. 
+이글은 아래와 같은 문서들을 참조하여 작성하였다.
 
-#### 참고 문서 
-[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)  
+####  0. 참고 문서 
+[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)
 [# Scheduling in Spring with Quartz 코드 설명](https://www.baeldung.com/spring-quartz-schedule)
+
+### 1.  들어가며
+Quartz Job Scheduler 내용은 조금씩 나누어 업데이트를 할 생각입니다. 스프링 부트에서의 간단한 Quartz Job Example 부터 Quartz Cluster 구성까지 알아보도록 하겠습니다. 
+
+
+### 2. Quartz란 무엇인가?
+ Quartz는 자바 기반의 Job Scheduling 라이브러리입니다. 간단한 simple intervla 형식부터 Cron형태의 지정된 복잡한 스케쥴 관리까지 지원합니다.
+
+### 3. Quartz의 아키텍처 및 구성요소
+quartz는 모듈식 아키택쳐를 가지고 있습니다. 
+이들은 필요에 따라 결합 할 수 있는 몇가지 기본 구성요소로 구성됩니다.  
+그중에서 __Job, JobDetial, Trigger, Scheduler__ 는 모든 job에 공통적으로 사용되는 부품들입니다.
+
+
+
+- __Job__ 
+	- Quartz API에서 단 하나의 메서드를 가진 execute(JobExecutionContext context) Job 인터페이스를 제공합니다. 이곳에 사용하고자 하는 메서드를 구현하면 됩니다.
+	- Job의 Trigger가 발생하면 스케줄러는 JobExecutionContext객체를 넘겨주고 execute 메서드를 호출합니다. 
+	- 아래의 짧은 예제에서는 Job이 작업을 서비스 클래스에 위임하는것을 확인할 수 있습니다.
+
+
+```java
+@Component
+public class SampleJob implements Job{
+	@Autowired
+	private SampleJobService jobService;
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+        jobService.executeSampleJob();
+    }
+}
+```
+
+- __JobDetail__
+	- Job이 작업을 처리하는 주체이지만, Quartz는 Job class의 실제 인스턴스를 저장하진 않습니다. 대신 JobDetail의 클래스를 사용하여 Job의 인스턴스를 정의할 수 있습니다. 
+	- Job을 실행시키기 위한 정보를 담고 있는 객체, Job의 이름, 그룹, JobDataMap 속성들을 지정합니다.
+	- Trigger가 작업을 수행할때 이정보를 기반으로 스케쥴링 하게 됩니다.
+	
+- __Trigger__
+	- Trigger는 작업을 예약하는 메카니즘입니다. 즉 트리거 인스턴스가 작업의 실행을 호출합니다.
+	- Job은 (작업개념) Trigger는 (일정개념)의 책임을 가지고 있어 서로 명확하게 구분됩니다.
+	- Trigger는 Job을 실행시킬 스케줄링 조건(ex 반복횟수, 시작시간) 등을 담고 있으며 Scheduler는 이 정보를 기반으로 job을 수행합니다.
+	- Trigger는 2가지 형태로 지정할 수 있습니다.
+		- __SimpleTrigger__
+			- 특정 시간에 Job을 수행할 때 사용되며 반복 횟수와 실행 간격을 조정할 수 있습니다.
+		- __CronTrigger__
+			- cron표현식으로 Trigger를 정의 합니다.
+```
+@Bean
+public SimpleTriggerFactoryBean trigger(JobDetail job) {
+    SimpleTriggerFactoryBean trigger = new SimpleTriggerFactoryBean();
+    trigger.setJobDetail(job);
+    trigger.setRepeatInterval(3600000);
+    trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+    return trigger;
+```
+
+- SchedulerFactory
+	- 클래스패스에 quartz properties 파일을 추적합니다,
+	- __Scheduler__ :  스케쥴 팩토리에서 얻어오며, JobDetial과 Trigger를 가지고 스케쥴을 정할수 있습니다.
 
