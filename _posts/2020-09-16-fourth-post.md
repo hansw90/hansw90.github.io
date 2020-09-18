@@ -77,7 +77,9 @@ public SimpleTriggerFactoryBean trigger(JobDetail job) {
     return trigger;
 ```
 
-- SchedulerFactory
-	- 클래스패스에 quartz properties 파일을 추적합니다,
-	- __Scheduler__ :  스케쥴 팩토리에서 얻어오며, JobDetial과 Trigger를 가지고 스케쥴을 정할수 있습니다.
-
+- __SchedulerFactory__
+	- Scheduler 를 빌드하는 역할로 Quartz 관련 속성을 기반으로 스케줄러 모델을 빌드하는 역할을 합니다.	
+	- 클래스패스에 quartz.properties(appication.properties) 파일을 추적하고 설정합니다.
+	
+	- __Scheduler__ : 스케쥴 팩토리에서 얻어오며, JobDetial과 Trigger를 가지고 스케쥴을 정할수 있습니다.
+	
