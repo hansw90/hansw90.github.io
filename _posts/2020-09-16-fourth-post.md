@@ -14,7 +14,7 @@ categories: spring
 이글은 아래와 같은 문서들을 참조하여 작성하였다.
 
 ####  0. 참고 문서 
-[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)
+[## Scheduling in Spring with Quartz Example 예제 코드](https://github.com/eugenp/tutorials/tree/master/spring-quartz)  
 [# Scheduling in Spring with Quartz 코드 설명](https://www.baeldung.com/spring-quartz-schedule)
 
 ### 1.  들어가며
@@ -28,7 +28,10 @@ Quartz Job Scheduler 내용은 조금씩 나누어 업데이트를 할 생각입
 quartz는 모듈식 아키택쳐를 가지고 있습니다. 
 이들은 필요에 따라 결합 할 수 있는 몇가지 기본 구성요소로 구성됩니다.  
 그중에서 __Job, JobDetial, Trigger, Scheduler__ 는 모든 job에 공통적으로 사용되는 부품들입니다.
-
+__Quartz 실행흐름__
+![](https://i.imgur.com/JB5c5mF.jpg)
+Quartz 실행 흐름은 다음 그림과 같습니다. 간단히 요약하면 Scheduler가 Job의 실행 정보를 통해 정해진 시간이(SimpleTrigger)나 정해진 주기(CronTrigger)
+Job을 실행합니다.
 
 
 - __Job__ 
