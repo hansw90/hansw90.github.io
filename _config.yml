@@ -95,10 +95,10 @@ analytics:
 # Site Author
 author:
   name             : 한승우
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : https://avatars3.githubusercontent.com/u/2585679?s=400&u=abb41dd2442b7977d08fd737531d6d107a80fcf6&v=4
   bio              : 허접 신입 개발자?? 한승우의 삽질 일기를 기록하려 합니다.
   location         : "KOR, SEOUL"
-  email            :
+  email            : ashghan@naver.com
   links:
     - label: "hsw90@leevi.co.kr"
       icon: "fas fa-fw fa-envelope-square"
@@ -208,7 +208,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
