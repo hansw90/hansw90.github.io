@@ -17,7 +17,7 @@ minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale                   : "KOR Seoul"
-title                    : "SEUNGWOO HAN"
+title                    : "SEUNGWOO HAN 의 삽질 블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "hsw90"
