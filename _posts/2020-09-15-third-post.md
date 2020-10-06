@@ -1,7 +1,7 @@
 ---
 title: "오늘의 삽질 2. 지금까지 내가 하고 있던 일과, 대용량 데이터 synchronization 작업"
 date: 2020-09-14- 22:54:00 -0000
-categories: database
+categories: diary
 
 ---
 음, 내가 벌써 회사에 와서 일한지 한달이 조금 넘었다,,  
