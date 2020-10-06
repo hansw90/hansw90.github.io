@@ -1,9 +1,10 @@
 ---
 title: "자바 디자인 패턴 (0).  디자인 패턴이란?"
 date: 2020-09-30 00:48
-categories: Java Design Pattern
+categories: JavaDesignPattern
 
 ---
+
 갑자기 올리는 디자인 패턴 (0)
 
 
