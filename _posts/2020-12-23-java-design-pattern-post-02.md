@@ -1,6 +1,6 @@
 ---
-title: "자바 디자인 패턴 (0).  디자인 패턴이란?"
-date: 2020-09-30 00:48
+title: "자바 디자인 패턴 (2).  싱글턴 패턴이란?"
+date: 2020-12-23 00:48
 categories: JavaDesignPattern
 
 ---
