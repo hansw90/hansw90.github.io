@@ -75,3 +75,143 @@ public class Example {
 
 그럼 위의 문제를 어떻게 해결하는지 보자,
 
+```java
+public abstract class PizzaStore {
+    public Pizza orderPizza(String type) {
+        Pizza pizza = createPizza(type);
+ 
+        pizza.prepare();
+        pizza.bake();
+        pizza.cut();
+        pizza.box();
+ 
+        return pizza;
+    }
+ 
+    abstract protected Pizza createPizza(String type);
+}
+ 
+public class ChicagoPizzaStore extends PizzaStore {
+    @Override
+    protected Pizza createPizza(String type) {
+        if(type.equals("cheese")) {
+            return new ChicagoStyleCheesePizza();
+        }
+        else if(type.equals("pepperoni")) {
+            return new ChicagoStylePepperoniPizza();
+        }
+        else {
+            return null;
+        }
+    }
+}
+ 
+public class Main {
+    public static void main(String[] args) {
+        PizzaStore nyPizzaStore = new NyPizzaStore();
+        PizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
+ 
+        Pizza pizza = nyPizzaStore.orderPizza("cheese");
+        System.out.println(pizza.getName() + "피자를 주문 했습니다.");
+        System.out.println("===================");
+        pizza = chicagoPizzaStore.orderPizza("pepperoni");
+        System.out.println(pizza.getName() + "피자를 주문 했습니다.");
+    }
+}
+```
+
+의존성 뒤집기 원칙 (Dependency Inversion Principle) : 추상화 된 것에 의존하도록 만들기
+구상 클래스에 의존 하도록 만들지 말고, 추상클래스나 인터페이스와 같이 추상적인 것에 의존하는 코드를 만들어야 한다.
+
+#### 4. 추상 팩도리 메서드
+
+추상 팩터리 패턴은 많은 수의 연관된 서브 클래스를 특정 그룹으로 묶어 한번에 교체할 수 있도록 만든 디자인 패턴이다. 예를 들어 특정 라이브러리를 배포하는데 OS별로 지원하는 기능이 상이 하다면 추상 팩토리 매서드 패턴을 사용해 OS별 기능 변경을 통합적으로 처리할 수 있다.
+
+### 5. 추상 팩토리 매서드 코드
+
+`interface MachineA
+```java
+public interface  MachineA {
+    public void process();
+}
+````
+
+MachineA1 class 
+```java
+public class MachineA1 implements MachineA {
+    public void process() {
+        System.out.println("execute Machine1");
+    }
+}
+```
+
+MachineA2 class
+```java
+public class MachineA2 implements MachineA {
+    public void process() {
+      System.out.println("execute Machine2");
+    }
+}
+```
+
+
+`interface MachineA
+```java
+public interface  MachineB {
+    public void process();
+}
+````
+
+MachineA1 class
+```java
+public class MachineB1 implements MachineB {
+    public void process() {
+        System.out.println("execute Machine1");
+    }
+}
+```
+
+MachineA2 class
+```java
+public class MachineB2 implements MachineB {
+    public void process() {
+      System.out.println("execute Machine2");
+    }
+}
+```
+
+MachineFactory class
+```java
+public interface MachineFatory {
+    public MachineA getMachineA();
+    public MachineB getMachineA();
+}
+```
+MachineFactoryA class
+```java
+public class MachineFactoryA implements MachineFactory{
+	@Override
+	public MachineA getMachineA() {
+		return new MachineA1();
+	}
+	@Override
+	public MachineB getMachineB() {
+		return new MachineB1();
+	}
+}
+```
+
+MachineFactoryA class
+```java
+public class MachineFactoryB implements MachineFactory{
+	@Override
+	public MachineA getMachineA() {
+		return new MachineA2();
+	}
+	@Override
+	public MachineB getMachineB() {
+		return new MachineB2();
+	}
+}
+```
+
