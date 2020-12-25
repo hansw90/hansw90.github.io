@@ -2,7 +2,6 @@
 title: "자바 디자인 패턴 (1).  정적 팩토리 메소드"
 date: 2020-12-25 22:59
 categories: JavaDesignPattern
-
 ---
 
 올해도 솔크,, 
@@ -29,13 +28,13 @@ categories: JavaDesignPattern
     즉 중요한 데이터를 보존, 보호하는 것을 뜻한다.
 ```
 
-좀더 구체적으로 객체를 생성하는 메소드를 static으로 선언하는 기법이다.
+좀더 구체적으로 객체를 생성하는 메소드를 static 으로 선언하는 기법이다.
 
 자바의 valueOf가 메서드가 정적 팩토리 메서드의 한 예이다.
 
-```java
+```
 String exBoolean = String.valueOf(42);
-
+                                                                                           
 public static String valueOf(int i) {
     return Integer.toString(i);
 }
@@ -56,4 +55,91 @@ public static String valueOf(long l) {
 ### 3. 정적 팩토리 메서드 단점
 1. 정적 팩토리 메서드만 있는 클래스라면, 생성자가 없으므로 하위 클래스를 만들지 못한다.
 2. 정적 팩토리 메서드는 다른 정적 메서드와 잘 구분이 되지 않는다. (문서만으로 확인하기 어려움)
+
+### 4. 특징
+
+##### 1. 가독성이 좋다.
+```java
+
+class FootballPlayer {
+    String Name;
+    Integer age;
+    Integer speed;
+    Integer pass;
+    Integer shoot;
+    Integer defense;
+
+    public FootballPlayer( String name, Integer age, Integer speed, Integer pass, Integer shoot, Integer defense) {
+        this.name = name;
+        this.age = age;
+        this.shoot = shoot;
+        this.defense = defense;
+        
+    }
+    
+    public static FootballPlayer striker(String name, Integer age) {
+        Random random = new Random();
+        Integer shoot = random.nextInt(100);
+        Integer defense = random.nextInt(50);        
+        return new FootballPlayer(name, age, shoot, defense);                
+    }
+
+    public static FootballPlayer centerback(String name, Integer age) {
+        Random random = new Random();
+        Integer shoot = random.nextInt(50);
+        Integer defense = random.nextInt(100);
+        return new FootballPlayer(name, age, shoot, defense);
+    }
+}
+```
+생성자를 사용해 스트라이커나 센터백을 생성해야 한다면 아래와 같다.
+```java
+public class Ground {
+    FootballPlayer messi = new FootballPlayer("messi", 33, 99, 40);
+    FootballPlayer ramos = new FootballPlayer("ramos", 33, 30, 95);
+}
+```
+이 정보만으로는 messi가 스트라이커인지 수비수인지 알수가 없다.
+
+하지만 정적 팩토리 메서드를 사용한다면 좀 더 읽기 쉬운 코드가 된다.
+
+```java
+public class Ground {
+    FootballPlayer messi = FootballPlayer.striker("messi", 33);
+    FootballPlayer messi = FootballPlayer.ramos("ramos", 33);
+}
+```
+
+good :) 
+
+##### 2. 호출할 때마다 새로운 객체를 생성할 필요가 없다.
+
+##### 3. 하위 자료형 객체를 반환할 수 있다.
+
+이말인즉 리턴하는 객체의 타입을 유연하게 지정할 수 있다는 말이다.
+
+```java
+class OrderUtil {
+
+    public static Discount createDiscountItem(String discountCode) throws Exception {
+        if(!isValidCode(discountCode)) {
+            throw new Exception("잘못된 할인 코드");
+        }
+        // 쿠폰 코드인가? 포인트 코드인가?
+        if(isUsableCoupon(discountCode)) {
+            return new Coupon(1000);
+        } else if(isUsablePoint(discountCode)) {
+            return new Point(500);
+        }
+        throw new Exception("이미 사용한 코드");
+    }
+}
+
+class Coupon extends Discount { }
+class Point extends Discount { }
+```
+
+할인 코드의 규칙에 따라 Coupon 과 Point 객체를 선택적으로 리턴한다.
+
+이 방벙을 사용하려면 두 하위클래스 coupon과 print 클래스가 같은 인터페이스를 구현하거나 같은 부모 클래스를 가져야 한다.
 
