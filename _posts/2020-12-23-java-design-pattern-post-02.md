@@ -26,7 +26,7 @@ __싱글톤을 사용하는 클라이언트 코드를 테스트 하는것은 어
 
 #### 1-2 Stateless Object란? 
 
-![※ Stateless Object란?](https://stackoverflow.com/questions/9735601/what-is-stateless-object-in-java)
+[※ Stateless Object란?][https://stackoverflow.com/questions/9735601/what-is-stateless-object-in-java]
 stackoverflow 인용
 
 Stateless object is an instance of a class without instance fields (instance variables). The class may have fields, but they are compile-time constants (static final).
