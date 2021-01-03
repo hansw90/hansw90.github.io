@@ -35,6 +35,10 @@ categories: JavaDesignPattern
 3. 예측하지 못한 정보를 갱신
 
 ### 4. 자바 내장 옵저버 패턴 
+
+자바 내장 Observable, Observer는 Java SE 9 버전 부턴 Deprecated 되었음을 알린다.
+그 이유에 대해선 4-4 에서 설명하도록 하겠다.
+
 - java.util.Observer
 - java.util.Observable
 
@@ -59,3 +63,252 @@ categories: JavaDesignPattern
 
 
 ##### 4-3 자바 내장 옵저버 패턴 예제 코드
+SubscribeController.class
+```java
+
+// PlayerController 가 Subject
+public class SubscribeController extends Observable {
+    // 감시의 대상
+    private boolean subscribeStatus;
+
+    public SubscribeController() {
+    }
+
+    // 데이터를 전달 받아 플래그 값을 변경후
+    // 새로운 데이터가 들어왔을을 알린다. 자기가 직접 캐치하는게 아닌데 옵저버??? 좀 이상한구먼
+    public void setSubscribe(boolean subscribeStatus) {
+        this.subscribeStatus = subscribeStatus;
+        setChanged();
+        notifyObservers();
+    }
+
+    // 실행 여부 플래그 값 반환
+    public boolean getSubscribe() {
+        return subscribeStatus;
+    }
+}
+```
+Subscriber1.class
+```java
+public class Subscriber1 implements Observer {
+    Observable observable; // 등록될 Observable
+    private boolean subscribeStatus; // 실행 여부
+
+    public Subscriber1(Observable o) {
+        this.observable = o;
+        observable.addObserver(this); // 옵저버에 현재 클래스를 등록한다.
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof SubscribeController) {
+            SubscribeController controller = (SubscribeController) o;
+            this.subscribeStatus = controller.getSubscribe();
+            act(); // 변화후 내가 실행하고 싶은 작업
+        }
+    }
+
+    public void act() {
+        if (subscribeStatus) {
+            System.out.println("Subscriber1 구독 시작");
+        } else {
+            System.out.println("Subscriber1 구독 취소");
+        }
+    }
+
+}
+```
+
+Subscriber2.class
+```java
+public class Subscriber2 implements Observer {
+
+    Observable observable; // 등록될 Observable
+    private boolean subscribeStatus; // 실행 여부
+
+    public Subscriber2(Observable o) {
+        this.observable = o;
+        observable.addObserver(this); // 옵저버에 현재 클래스를 등록한다.
+    }
+
+   @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof SubscribeController) {
+            SubscribeController controller = (SubscribeController) o;
+            this.subscribeStatus = controller.getSubscribe();
+            act(); // 변화후 내가 실행하고 싶은 작업
+        }
+    }
+
+    public void act() {
+        if (subscribeStatus) {
+            System.out.println("Subscriber2 구독 시작");
+        } else {
+            System.out.println("Subscriber2 구독 취소");
+        }
+    }
+    // 별도의 구독 취소 methdd를 만듬
+    public void cancleSubscribe() {
+        observable.deleteObserver(this);
+        System.out.println("Subscriber2 구독 완전 취소");
+    }
+}
+```
+Test.class
+```java
+public class Test {
+
+    public static void main(String[] args) {
+        SubscribeController controller = new SubscribeController();
+
+        Subscriber1 subscriber1 = new Subscriber1(controller);
+        Subscriber2 subscriber2 = new Subscriber2(controller);
+
+        System.out.println("---------모든 구독 일시 정지 ------");
+        controller.setSubscribe(false);
+
+        System.out.println("---------모든 구독 다시 시작 ------");
+        controller.setSubscribe(true);
+
+        System.out.println("________Subsciber2 구독 취소______");
+        subscriber2.cancleSubscribe();
+
+        System.out.println("---------모든 구독 일시 정지 ------");
+        controller.setSubscribe(false);
+
+        System.out.println("---------모든 구독 다시 시작 ------");
+        controller.setSubscribe(true);
+    }
+}
+```
+
+결과
+```
+---------모든 구독 일시 정지 ------
+Subscriber2 구독 취소
+Subscriber1 구독 취소
+---------모든 구독 다시 시작 ------
+Subscriber2 구독 시작
+Subscriber1 구독 시작
+________Subsciber2 구독 취소______
+Subscriber2 구독 완전 취소
+---------모든 구독 일시 정지 ------
+Subscriber1 구독 취소
+---------모든 구독 다시 시작 ------
+Subscriber1 구독 시작
+```
+
+굉장히 편리하고 유용한 기능 인것 같다.
+그런데 왜 JAVA SE 9 부터는 이 기능이 deprecated 되었을까?..
+
+Java SE 9 문서의 Observable에는 이와 같이 설명한다.
+- Observer와 Observable이 제공하는 이벤트 모델이 제한적이다.
+- Observable의 notify는 순서를 보장할 수 없으며, 상태 변경은 1:1로 일치하지 않는다.
+- 더 풍부한 이벤트 모델은 java.beans 패키지가 제공하고 있다.
+- 멀티 스레드에서의 신뢰할 수 있고 순서가 보장된 메시징은 __java.util.concurrent__ 패키지의 concurrent 자료 구조들 중 하나를 골라 쓰는 편이 낫다.
+- reactive stream 스타일 프로그래밍은 __Flow API__ 를 쓰기를 권한다.
+
+
+객체 지향적인 단점 
+- Observable은 class이다.
+   - Observable이 클래스이기 때문에 서브 클래스를 만들어야 한다는 점이 문제, 이미 다른 수퍼 클래스를 확장하고 있는 클래스에 Observable의 기능을 추가할 수가 없다. 이러한 이유로 재사용성에 제약이 생긴다.
+ 
+
+### 5. 헤드퍼스트 디자인 패턴 : 옵저버 패턴 예제 
+
+Observer.class
+```java
+public interface Observer {
+    public void update(float temp, float humidity, float pressure);
+}
+```
+
+Subject.class
+```java
+public interface Subject {
+    public void registerObserver(Observer o); // Subject에 Observer를 구독자로 등록
+    public void removeObserver(Observer o); // Subject에 등록한 Observer의 구독을 해지
+    public void notifyObservers(); // Subject에서 모든 Observer에 정보를 전달한다.
+}
+```
+
+DisplayElement.class
+```java
+public interface DisplayElement {
+    public void display();
+}
+```
+
+WeatherData.class
+```java
+public class WeatherData implements  Subject{
+
+    private ArrayList<Observer> observers;
+    private float temperature;
+    private float humidity;
+    private float pressure;
+
+    public WeatherData() {
+        this.observers = new ArrayList<>();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o);
+        if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update(temperature, humidity, pressure);
+        }
+    }
+
+    public void measurementsChanged() {
+        notifyObservers();
+    }
+
+    public void setMeasurements(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        measurementsChanged();  // 변경이 발생할 때, 알림을 돌리는 방법 선택
+    }
+}
+```
+
+CurrentConditionDisplay
+```java
+public class CurrentConditionsDisplay implements Observer, DisplayElement{
+    private int id;
+    private float temperature;
+    private float humidity;
+    private Subject weatherData;
+
+    public CurrentConditionsDisplay(Subject weatherData, int id) {
+        this.id = id;
+        this.weatherData = weatherData;
+        weatherData.registerObserver(this);
+    }
+
+    @Override
+    public void update(float temp, float humidity, float pressure) {
+        this.temperature = temp;
+        this.humidity = humidity;
+        display();  // 편의상 여기에 배치
+    }
+
+    @Override
+    public void display() {
+        System.out.println("장비 ID: " + id + ", 현재 기온: " + temperature + "도, 습도: " + humidity + "%");
+    }
+}
+```
