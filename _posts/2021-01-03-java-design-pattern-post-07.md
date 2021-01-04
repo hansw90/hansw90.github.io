@@ -6,6 +6,7 @@ categories: JavaDesignPattern
 
 주말이라 2개 포스팅 ~ :) 이름과 같이 끼워 연결해주는 어댑터 패턴 (adapater pattern)에 대해 알아보자 
 
+![adapter pattern](https://upload.wikimedia.org/wikipedia/commons/e/e5/W3sDesign_Adapter_Design_Pattern_UML.jpg)
 
 ### 0. 목차
 
@@ -54,8 +55,86 @@ categories: JavaDesignPattern
 
 ### 4. 예제 코드
 
-#### 4-1. 인스턴스에 의한 Adapter 패턴
+__MediaPlayer.java__
+```java
+public interface MediaPlayer {
+    void play(String filename);
+}
+```
+MediaPlayer 는 play 메소드
+
+__MediaPackage.java__
+```java
+public interface MediaPackage {
+    void playFile(String filename);
+}
+```
+MediaPackage 는 playFile 메소드
 
 
+__MP3.java__
+```java
+public class MP3 implements MediaPlayer {
+    @Override
+    public void play(String filename) {
+        System.out.println("play mp3" + filename);
+    }
+}
+```
 
-#### 4-2. 클래스에 의한 Adapter 패턴
+__MP4.java__
+```java
+public class MP4 implements MediaPackage {
+    @Override
+    public void playFile(String filename) {
+        System.out.println("play mp3" + filename);
+    }
+}
+```
+
+__MKV.java__
+```java
+public class MKV implements MediaPackage {
+    @Override
+    public void playFile(String filename) {
+        System.out.println("play mp3" + filename);
+    }
+}
+```
+
+MP4, MKV 도 play로 실행시킬 방법이 없을까??
+
+__Adapter__를 사용
+
+FormatAdapter.java
+```java
+public class FormatAdapter implements Mediaplayer {
+    private MediaPackage mediaPackage;
+    
+    public FormatAdapter (MediaPackage mediaPackage) {
+        this.mediaPackage = mediaPackage;
+    }
+    
+    @Override 
+    public void play(String filename) {
+        System.out.println("using Adapter --> ");
+        mediaPackage.playFile(filename);
+    }
+}
+```
+
+Main.java
+```java
+public class Main {
+    public static void main (String[] args) {
+        MediaPlayer player = new MP3();
+        player.play("mp3");
+        
+        player = new FormatAdapter(new MP4());
+        player.play("file.mp4");
+        
+        // 같은 방식으로 사용이 가능해졌다.
+        
+    }
+}
+```
