@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278f2b7f-f3fb-4247-ad3d-4eb417e0f008" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/others/2021-08-03-other-post-01.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/others/2021-08-03-other-post-01.md" beforeDir="false" afterPath="$PROJECT_DIR$/others/2021-08-03-other-post-01.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/others" />
+    <property name="last_opened_file_path" value="$USER_HOME$/temp_km/davinci-km" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,7 +96,7 @@
       <workItem from="1610976736821" duration="62000" />
       <workItem from="1627667039005" duration="34000" />
       <workItem from="1627667087233" duration="14109000" />
-      <workItem from="1627899585347" duration="7041000" />
+      <workItem from="1627899585347" duration="11990000" />
     </task>
     <servers />
   </component>
