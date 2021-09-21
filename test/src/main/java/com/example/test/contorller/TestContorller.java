@@ -3,6 +3,7 @@ package com.example.test.contorller;
 import com.example.test.dto.TestDto;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -62,7 +63,28 @@ public class TestContorller {
         jsonObject.add("test1", testJson);
         jsonObject.add("test2", testStringToJsonElement);
 
-
         return ResponseEntity.status(HttpStatus.OK).body(jsonObject);
+    }
+
+
+    @PostMapping("return/responseEntity/toJsonTree2")
+    public ResponseEntity<?> test4() {
+        String json = "{\"a\": 1, \"b\": 1}";
+        Gson gson = new Gson().newBuilder().serializeNulls().create();
+        JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+
+        System.out.println(jsonObject); // {"a":1,"b":1}
+
+        jsonObject.addProperty("a", 2);
+        jsonObject.add("b", JsonNull.INSTANCE);
+        System.out.println(jsonObject); // {"a":2,"b":null}
+
+//        jsonObject.remove("a");
+        System.out.println(jsonObject.toString()); // {"b":null}
+        ResponseEntity responseEntity = ResponseEntity.status(HttpStatus.OK).body(jsonObject.toString());
+        System.out.println(responseEntity.getBody().toString());
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(jsonObject.toString());
     }
 }
