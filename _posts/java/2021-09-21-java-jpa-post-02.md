@@ -16,3 +16,55 @@ __준영속__ 은 영속성 컨텍스트가 관리하는 영속 상태의 엔티
 
 - 준영속 상태의 엔티티는 영속성 컨텍스트가 제공하는 기능을 사용할수 없다.
 
+__준영속 상태로 만드는 방법__
+
+1. em.detach(entity) : 특정 엔티티만 준영속 상태로 전환
+2. em.clear() : 영속성 컨텍스트 완전 초기화
+3. em.close() : 영속성 컨텍스트 종료
+
+##### 1-1. 엔티티를 준영속 상태로 전환 : detach()
+
+```java
+public class Jpa {
+    public void testDetached() {
+        // 비영속
+        Member member = new Member();
+        member.setId(1);
+        member.setUserName("한승우");
+
+        // 영속
+        em.persist(member);
+
+        // 영속성 컨텍스트에서 분리(준영속 상태)
+        em.detach(member);
+
+        //  커밋
+        transaction.commit();
+    }
+}
+```
+
+이렇게 em.detach(member) 를 실행해서 준영속 상태로 만든다는 의미는 엔티티가 영속성 컨텍스트가 관리하지 않는 상태로 만든다는것을 의미 한다.
+준영속 상태이므로 영속성 컨텍스트가 지원하는 어떤 기능도 동작하지 않는다.
+
+- 1차 캐시에서 제거
+- 쓰기 지연 SQL 저장소에 저장되었던 관련 SQL 모두 제거
+    따라서 transaction.commit() 이 일어나도 데이터 베이스 저장 x
+  
+##### 1-2. 영속성 컨텍스트 초기화 : clear()
+```java
+// 영속 상태(엔티티 조회) 
+Member member = em.find(Member.class, "memberA"); 
+// 
+em.clear(); // 영속성 컨텍스트 초기화 
+// 준영속 상태 
+member.setUsername("한승우");
+```
+
+em.clear()는 영속 컨텍스트에 있는 모든 것을 초기화 시킨다. (영속성 컨텍스트를 제거하고 새로 만든것과 같음)
+따라서 memberA는 준영속 상태가 되며, member.setUser() 가 실행되더라도 영속성 컨텍스트가 관리하지 않느 상태이므로 이름을 변경하여도 데이터 베이스에는 반영되지 않는다.
+
+
+##### 1-3 영속성 컨텍스트 종료 : close()
+
+영속성 컨텍스트를 종료하면 해당 영속성 컨텍스트가 관리하던 영속 상태의 엔티티가 모두 준영속 상태가 된다.
