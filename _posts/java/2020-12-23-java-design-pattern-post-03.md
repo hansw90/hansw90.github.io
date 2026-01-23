@@ -1,8 +1,9 @@
 ---
 title: "자바 디자인 패턴 (3).  팩토리 패턴이란?"
 date: 2020-12-23 08:20
-categories: JavaDesignPattern
-
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 하루에 하나씩 디자인 패턴 

@@ -1,8 +1,9 @@
 ---
 title: "자바 디자인 패턴 (2).  싱글턴 패턴이란?"
 date: 2020-12-23 00:48
-categories: JavaDesignPattern
-
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 갑자기 올리는 디자인 패턴 (2) 싱글턴 패턴 Singleton Pattern

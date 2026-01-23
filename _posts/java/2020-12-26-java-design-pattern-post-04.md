@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (4).  빌더 패턴"
 date: 2020-12-26 20:12
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 일어나니 20시

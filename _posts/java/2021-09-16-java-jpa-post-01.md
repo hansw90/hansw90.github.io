@@ -1,7 +1,9 @@
 ---
 title: "(1) JPA 영속성 관리"
-date: 2021-09-16-00:00:00 -0000
-categories: JAVA JPA
+date: 2021-09-16 00:00:00 -0000
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 회사에서 사전관리 작업을 하는도중 사전에 워드를 일괄 등록하고, 일괄 수정 삭제를 해야할 일이 발생했다.

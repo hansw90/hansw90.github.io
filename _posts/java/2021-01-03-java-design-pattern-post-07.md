@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (7). 어댑터 패턴 (Adapter 패턴)"
 date: 2021-01-03 20:16
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 주말이라 2개 포스팅 ~ :) 이름과 같이 끼워 연결해주는 어댑터 패턴 (adapater pattern)에 대해 알아보자 

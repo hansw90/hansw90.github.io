@@ -1,7 +1,9 @@
 ---
 title: "(2) JPA 영속성 관리 (플러시, 준영속)"
-date: 2021-09-21-00:00:00 -0000
-categories: JAVA JPA
+date: 2021-09-21 00:00:00 -0000
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 이전 시간에 했던 JPA 영속성 관리를 더 알아보도록 하자

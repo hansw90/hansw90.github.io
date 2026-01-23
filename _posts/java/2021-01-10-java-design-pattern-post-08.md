@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (8). 전략 패턴"
 date: 2021-01-10 22:00
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 내일 일요일 실화냐,, 프로젝트에서 굉장히 많이 사용되는, 전략적으로 행위를 유연히 변경 가능한 전략 패턴에 대해 알아보자,

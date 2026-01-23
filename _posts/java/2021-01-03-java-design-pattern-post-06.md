@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (6). 옵저버 패턴 (Observer Pattern)"
 date: 2021-01-03 11:09
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 2021년 2번째 포스팅, 객체 상태 변화를 관찰하는 자바 옵저버 패턴에 대해 알아보자, (변태 스토커)

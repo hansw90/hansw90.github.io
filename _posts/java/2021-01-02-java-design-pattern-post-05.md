@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (5). 플라이웨이트 패턴 "
 date: 2021-01-02 22:12
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 2021 첫 포스트, 디자인 패턴중 Facade 패턴, Adapter 패턴, Decorator 패턴과 같은 __구조 패턴__ 인 플라이웨이트 패턴에 대해 알아보자,

@@ -1,7 +1,9 @@
 ---
 title: "자바 디자인 패턴 (1).  정적 팩토리 메소드"
 date: 2020-12-25 22:59
-categories: JavaDesignPattern
+categories: JAVA
+toc: true
+toc_sticky: true
 ---
 
 올해도 솔크,, 
