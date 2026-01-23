@@ -1,0 +1,519 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+/* Minecraft Style Custom Theme */
+
+/* Import Minecraft-style pixel font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Minecraft Color Palette */
+$minecraft-grass: #5D9B47;
+$minecraft-dirt: #8B6914;
+$minecraft-stone: #7F7F7F;
+$minecraft-sky: #87CEEB;
+$minecraft-dark: #1D1D1D;
+$minecraft-text: #3F3F3F;
+$minecraft-gold: #FCDC3B;
+$minecraft-diamond: #5DECF5;
+$minecraft-redstone: #FF0000;
+$minecraft-emerald: #17DD62;
+$minecraft-wood: #9C6A38;
+
+/* Override Minimal Mistakes variables */
+$primary-color: $minecraft-grass !default;
+$link-color: $minecraft-grass !default;
+$masthead-link-color: $minecraft-dark !default;
+$masthead-link-color-hover: $minecraft-grass !default;
+$navicon-link-color-hover: $minecraft-grass !default;
+$background-color: #F4F1E6 !default;
+$text-color: $minecraft-text !default;
+$border-color: $minecraft-dirt !default;
+
+$serif: 'VT323', monospace !default;
+$sans-serif: 'VT323', monospace !default;
+$monospace: 'VT323', monospace !default;
+
+$type-size-1: 2em !default;
+$type-size-2: 1.6em !default;
+$type-size-3: 1.4em !default;
+$type-size-4: 1.2em !default;
+$type-size-5: 1em !default;
+$type-size-6: 0.9em !default;
+
+/* Wider content area */
+$right-sidebar-width-narrow: 150px !default;
+$right-sidebar-width: 200px !default;
+$right-sidebar-width-wide: 250px !default;
+$max-width: 1400px !default;
+
+@import "minimal-mistakes/skins/air";
+@import "minimal-mistakes";
+
+/* ============================================
+   MINECRAFT STYLE OVERRIDES
+   ============================================ */
+
+/* Global Styles */
+* {
+  border-radius: 0 !important;
+}
+
+body {
+  font-family: 'VT323', monospace !important;
+  font-size: 1em;
+  background-color: #F4F1E6;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Masthead / Header */
+.masthead {
+  background: linear-gradient(180deg, $minecraft-grass 0%, darken($minecraft-grass, 10%) 100%);
+  border-bottom: 4px solid $minecraft-dirt;
+  box-shadow: 0 4px 0 darken($minecraft-dirt, 10%);
+
+  a {
+    color: white !important;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+
+    &:hover {
+      color: $minecraft-gold !important;
+    }
+  }
+}
+
+.site-title {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 1em !important;
+  letter-spacing: -1px;
+}
+
+.masthead__menu-item {
+  font-family: 'VT323', monospace !important;
+  font-size: 1.3em;
+}
+
+/* Navigation */
+.greedy-nav {
+  background: transparent !important;
+
+  a {
+    padding: 0.5em 1em;
+
+    &:hover {
+      background: rgba(0,0,0,0.2);
+    }
+  }
+
+  .visible-links a:before {
+    background: $minecraft-gold;
+  }
+}
+
+/* Page Title */
+.page__title {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 1.2em !important;
+  line-height: 1.5;
+  color: $minecraft-dark;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/* Content Area */
+.page__content {
+  font-size: 1em;
+  line-height: 1.7;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', cursive !important;
+    color: $minecraft-dark;
+    border-bottom: 3px solid $minecraft-grass;
+    padding-bottom: 0.5em;
+    margin-top: 1.5em;
+  }
+
+  h2 { font-size: 0.9em; }
+  h3 { font-size: 0.8em; }
+  h4 { font-size: 0.7em; }
+
+  p {
+    margin-bottom: 1.5em;
+  }
+
+  a {
+    color: $minecraft-grass;
+    text-decoration: none;
+    border-bottom: 2px dashed $minecraft-grass;
+
+    &:hover {
+      color: $minecraft-emerald;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+/* Code Blocks - Stone Block Style */
+pre, code {
+  font-family: 'VT323', monospace !important;
+  background: linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 100%) !important;
+  color: #FFFFFF !important;
+  border: 3px solid #5B5B5B !important;
+  box-shadow:
+    inset 2px 2px 0 rgba(255,255,255,0.2),
+    inset -2px -2px 0 rgba(0,0,0,0.2),
+    3px 3px 0 rgba(0,0,0,0.3);
+}
+
+pre {
+  padding: 1em !important;
+}
+
+code {
+  padding: 0.2em 0.4em !important;
+  font-size: 1em !important;
+}
+
+/* Blockquote - Sign Style */
+blockquote {
+  background: $minecraft-wood !important;
+  border-left: 6px solid darken($minecraft-wood, 20%) !important;
+  color: #FFF !important;
+  padding: 1em 1.5em !important;
+  font-style: normal !important;
+  box-shadow:
+    inset 2px 2px 0 rgba(255,255,255,0.1),
+    3px 3px 0 rgba(0,0,0,0.3);
+
+  &:before {
+    content: "📜 ";
+  }
+}
+
+/* Sidebar / Author Profile */
+.sidebar {
+  .author__avatar {
+    border: 4px solid $minecraft-grass !important;
+    box-shadow: 4px 4px 0 $minecraft-dirt;
+
+    img {
+      image-rendering: pixelated;
+    }
+  }
+
+  .author__name {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.7em !important;
+    color: $minecraft-dark;
+  }
+
+  .author__bio {
+    font-size: 0.95em;
+  }
+
+  .author__urls {
+    a {
+      background: transparent !important;
+      color: $minecraft-dark !important;
+      padding: 0.15em 0.3em;
+      margin: 0.1em 0;
+      display: block;
+      border: none;
+      box-shadow: none;
+      font-size: 0.9em;
+      border-left: 3px solid transparent;
+
+      &:hover {
+        background: rgba($minecraft-grass, 0.1) !important;
+        color: $minecraft-grass !important;
+        border-left: 3px solid $minecraft-grass;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .svg-inline--fa {
+      width: 1em;
+      margin-right: 0.3em;
+      color: $minecraft-grass;
+    }
+  }
+}
+
+/* Buttons - Minecraft Button Style */
+.btn,
+.pagination--pager,
+button,
+input[type="submit"] {
+  font-family: 'VT323', monospace !important;
+  font-size: 1em !important;
+  background: linear-gradient(180deg, #8B8B8B 0%, #6B6B6B 50%, #5B5B5B 50%, #4B4B4B 100%) !important;
+  color: white !important;
+  border: 3px solid #2B2B2B !important;
+  padding: 0.5em 1em !important;
+  text-shadow: 2px 2px 0 #3F3F3F;
+  box-shadow:
+    inset 2px 2px 0 rgba(255,255,255,0.3),
+    inset -2px -2px 0 rgba(0,0,0,0.3);
+  transition: all 0.1s;
+
+  &:hover {
+    background: linear-gradient(180deg, #6B8BC9 0%, #5070A0 50%, #4060A0 50%, #3050A0 100%) !important;
+    color: $minecraft-gold !important;
+    transform: translate(1px, 1px);
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow:
+      inset -2px -2px 0 rgba(255,255,255,0.3),
+      inset 2px 2px 0 rgba(0,0,0,0.3);
+  }
+}
+
+/* Archive Items / Post List */
+.archive__item {
+  background: #FFF;
+  border: 3px solid $minecraft-dirt;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: $minecraft-grass;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+  }
+
+  .archive__item-title {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.7em !important;
+    line-height: 1.6;
+
+    a {
+      border-bottom: none !important;
+    }
+  }
+}
+
+/* TOC - Table of Contents */
+.toc {
+  background: #FFF;
+  border: 3px solid $minecraft-grass !important;
+  box-shadow: 4px 4px 0 $minecraft-dirt;
+
+  .toc__title {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.6em !important;
+    background: $minecraft-grass;
+    color: white;
+    padding: 0.5em;
+  }
+
+  a {
+    font-size: 1em;
+    border-bottom: none !important;
+
+    &:hover {
+      color: $minecraft-emerald;
+    }
+  }
+}
+
+/* Tags */
+.page__taxonomy-item {
+  background: $minecraft-diamond !important;
+  color: $minecraft-dark !important;
+  border: 2px solid darken($minecraft-diamond, 20%) !important;
+  font-family: 'VT323', monospace !important;
+  padding: 0.2em 0.6em;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+
+  &:hover {
+    background: $minecraft-gold !important;
+  }
+}
+
+/* Footer */
+.page__footer {
+  background: linear-gradient(180deg, $minecraft-stone 0%, darken($minecraft-stone, 20%) 100%);
+  border-top: 4px solid $minecraft-dirt;
+  color: white;
+
+  a {
+    color: $minecraft-gold !important;
+
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
+/* Search */
+.search__toggle {
+  color: white !important;
+
+  &:hover {
+    color: $minecraft-gold !important;
+  }
+}
+
+.search-content {
+  .search-input {
+    font-family: 'VT323', monospace !important;
+    font-size: 1.3em;
+    border: 3px solid $minecraft-grass !important;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.1);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 0.7em !important;
+  }
+
+  .page__title {
+    font-size: 0.9em !important;
+  }
+
+  .page__content h2 {
+    font-size: 0.7em;
+  }
+}
+
+/* Fun Minecraft Cursor (optional - uncomment to enable) */
+/*
+body {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect x="8" y="0" width="4" height="4" fill="%23FFF"/><rect x="12" y="4" width="4" height="4" fill="%23FFF"/><rect x="16" y="8" width="4" height="4" fill="%23FFF"/><rect x="20" y="12" width="4" height="4" fill="%23FFF"/><rect x="12" y="16" width="4" height="4" fill="%23FFF"/><rect x="8" y="20" width="4" height="4" fill="%23FFF"/><rect x="4" y="24" width="4" height="4" fill="%23FFF"/></svg>'), auto;
+}
+*/
+
+/* Achievement-style notifications for hover */
+.archive__item:hover::after {
+  content: "⛏️";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.5em;
+}
+
+.archive__item {
+  position: relative;
+}
+
+/* Sidebar Navigation - Category Menu */
+.nav__list {
+  .nav__title {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.5em !important;
+    background: $minecraft-grass;
+    color: white;
+    padding: 0.8em 1em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .nav__items {
+    background: #FFF;
+    border: 3px solid $minecraft-dirt;
+    border-top: none;
+    padding: 0;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+
+    .nav__sub-title {
+      font-family: 'VT323', monospace !important;
+      font-size: 1.1em;
+      color: $minecraft-dark;
+      background: lighten($minecraft-dirt, 40%);
+      padding: 0.5em 1em;
+      margin: 0;
+      border-bottom: 2px solid $minecraft-dirt;
+
+      &:before {
+        content: "📦 ";
+      }
+    }
+
+    li {
+      a {
+        font-family: 'VT323', monospace !important;
+        font-size: 1em;
+        color: $minecraft-text;
+        padding: 0.4em 1em 0.4em 1.5em;
+        display: block;
+        border-left: 3px solid transparent;
+        transition: all 0.15s;
+
+        &:hover {
+          background: rgba($minecraft-grass, 0.1);
+          color: $minecraft-grass;
+          border-left-color: $minecraft-grass;
+        }
+
+        &:before {
+          content: "▸ ";
+          color: $minecraft-stone;
+        }
+
+        &:hover:before {
+          content: "▶ ";
+          color: $minecraft-grass;
+        }
+      }
+
+      &.active a {
+        background: rgba($minecraft-grass, 0.15);
+        color: $minecraft-grass;
+        border-left-color: $minecraft-grass;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* Category Archive Page */
+.taxonomy__section {
+  .taxonomy__title {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.7em !important;
+    background: linear-gradient(90deg, $minecraft-grass, transparent);
+    color: white;
+    padding: 0.5em 1em;
+    margin: 1.5em 0 0.5em;
+
+    &:before {
+      content: "🗂️ ";
+    }
+  }
+}
+
+/* Tags Page */
+.taxonomy__index {
+  a {
+    font-family: 'VT323', monospace !important;
+    background: $minecraft-diamond;
+    color: $minecraft-dark !important;
+    padding: 0.3em 0.6em;
+    margin: 0.2em;
+    display: inline-block;
+    border: 2px solid darken($minecraft-diamond, 15%);
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    transition: all 0.15s;
+
+    &:hover {
+      background: $minecraft-gold;
+      border-color: darken($minecraft-gold, 15%);
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    }
+  }
+}

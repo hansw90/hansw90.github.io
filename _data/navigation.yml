@@ -1,0 +1,35 @@
+# main navigation
+main:
+  - title: "Home"
+    url: /
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "About"
+    url: /about/
+
+# sidebar navigation for categories
+categories:
+  - title: "Development"
+    children:
+      - title: "Java"
+        url: /categories/java/
+      - title: "Elasticsearch"
+        url: /categories/elasticsearch/
+      - title: "Database"
+        url: /categories/db/
+  - title: "DevOps & Tools"
+    children:
+      - title: "Git"
+        url: /categories/git/
+      - title: "GraphDB"
+        url: /categories/graphdb/
+  - title: "AI & Data"
+    children:
+      - title: "NLP"
+        url: /categories/nlp/
+  - title: "Others"
+    children:
+      - title: "Etc"
+        url: /categories/others/
