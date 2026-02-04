@@ -5,43 +5,52 @@ search: false
 
 @charset "utf-8";
 
-/* Minecraft Style Custom Theme */
+/* ============================================
+   CLI / TERMINAL STYLE THEME
+   개발자를 위한 터미널 감성 블로그
+   ============================================ */
 
-/* Import Minecraft-style pixel font */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Import Terminal-style monospace fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
-/* Minecraft Color Palette */
-$minecraft-grass: #5D9B47;
-$minecraft-dirt: #8B6914;
-$minecraft-stone: #7F7F7F;
-$minecraft-sky: #87CEEB;
-$minecraft-dark: #1D1D1D;
-$minecraft-text: #3F3F3F;
-$minecraft-gold: #FCDC3B;
-$minecraft-diamond: #5DECF5;
-$minecraft-redstone: #FF0000;
-$minecraft-emerald: #17DD62;
-$minecraft-wood: #9C6A38;
+/* Terminal Color Palette */
+$terminal-bg: #0D1117;
+$terminal-bg-light: #161B22;
+$terminal-bg-lighter: #21262D;
+$terminal-border: #30363D;
+$terminal-text: #C9D1D9;
+$terminal-text-dim: #8B949E;
+$terminal-green: #3FB950;
+$terminal-green-bright: #56D364;
+$terminal-blue: #58A6FF;
+$terminal-cyan: #39C5CF;
+$terminal-yellow: #D29922;
+$terminal-orange: #DB6D28;
+$terminal-red: #F85149;
+$terminal-purple: #A371F7;
+$terminal-pink: #DB61A2;
 
 /* Override Minimal Mistakes variables */
-$primary-color: $minecraft-grass !default;
-$link-color: $minecraft-grass !default;
-$masthead-link-color: $minecraft-dark !default;
-$masthead-link-color-hover: $minecraft-grass !default;
-$navicon-link-color-hover: $minecraft-grass !default;
-$background-color: #F4F1E6 !default;
-$text-color: $minecraft-text !default;
-$border-color: $minecraft-dirt !default;
+$primary-color: $terminal-green !default;
+$link-color: $terminal-cyan !default;
+$masthead-link-color: $terminal-text !default;
+$masthead-link-color-hover: $terminal-green !default;
+$navicon-link-color-hover: $terminal-green !default;
+$background-color: $terminal-bg !default;
+$text-color: $terminal-text !default;
+$border-color: $terminal-border !default;
+$code-background-color: $terminal-bg-light !default;
+$footer-background-color: $terminal-bg-light !default;
 
-$serif: 'VT323', monospace !default;
-$sans-serif: 'VT323', monospace !default;
-$monospace: 'VT323', monospace !default;
+$serif: 'Fira Code', 'JetBrains Mono', monospace !default;
+$sans-serif: 'Fira Code', 'JetBrains Mono', monospace !default;
+$monospace: 'Fira Code', 'JetBrains Mono', monospace !default;
 
-$type-size-1: 2em !default;
-$type-size-2: 1.6em !default;
-$type-size-3: 1.4em !default;
-$type-size-4: 1.2em !default;
+$type-size-1: 1.8em !default;
+$type-size-2: 1.5em !default;
+$type-size-3: 1.25em !default;
+$type-size-4: 1.1em !default;
 $type-size-5: 1em !default;
 $type-size-6: 0.9em !default;
 
@@ -51,53 +60,81 @@ $right-sidebar-width: 200px !default;
 $right-sidebar-width-wide: 250px !default;
 $max-width: 1400px !default;
 
-@import "minimal-mistakes/skins/air";
+@import "minimal-mistakes/skins/dark";
 @import "minimal-mistakes";
 
 /* ============================================
-   MINECRAFT STYLE OVERRIDES
+   TERMINAL STYLE OVERRIDES
    ============================================ */
 
 /* Global Styles */
 * {
-  border-radius: 0 !important;
+  border-radius: 4px !important;
 }
 
 body {
-  font-family: 'VT323', monospace !important;
-  font-size: 1em;
-  background-color: #F4F1E6;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 4px 4px;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+  font-size: 15px;
+  background-color: $terminal-bg;
+  color: $terminal-text;
+  line-height: 1.7;
+}
+
+/* CRT Scanline Effect (subtle) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 9999;
 }
 
 /* Masthead / Header */
 .masthead {
-  background: linear-gradient(180deg, $minecraft-grass 0%, darken($minecraft-grass, 10%) 100%);
-  border-bottom: 4px solid $minecraft-dirt;
-  box-shadow: 0 4px 0 darken($minecraft-dirt, 10%);
+  background: $terminal-bg-light;
+  border-bottom: 1px solid $terminal-border;
+
+  &::before {
+    content: "$ ";
+    color: $terminal-green;
+    font-weight: 600;
+    margin-right: 0.5em;
+  }
 
   a {
-    color: white !important;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    color: $terminal-text !important;
 
     &:hover {
-      color: $minecraft-gold !important;
+      color: $terminal-green !important;
     }
   }
 }
 
 .site-title {
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 1em !important;
-  letter-spacing: -1px;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 1.1em !important;
+  font-weight: 600;
+  color: $terminal-green !important;
+
+  &::before {
+    content: "~/";
+    color: $terminal-text-dim;
+  }
 }
 
 .masthead__menu-item {
-  font-family: 'VT323', monospace !important;
-  font-size: 1.3em;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.9em;
 }
 
 /* Navigation */
@@ -106,375 +143,482 @@ body {
 
   a {
     padding: 0.5em 1em;
+    color: $terminal-text !important;
 
     &:hover {
-      background: rgba(0,0,0,0.2);
+      color: $terminal-green !important;
+      background: $terminal-bg-lighter;
     }
   }
 
   .visible-links a:before {
-    background: $minecraft-gold;
+    background: $terminal-green;
   }
 }
 
 /* Page Title */
 .page__title {
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 1.2em !important;
-  line-height: 1.5;
-  color: $minecraft-dark;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  font-family: 'Fira Code', monospace !important;
+  font-size: 1.5em !important;
+  line-height: 1.4;
+  color: $terminal-green-bright;
+  border-bottom: 1px solid $terminal-border;
+  padding-bottom: 0.5em;
+
+  &::before {
+    content: "# ";
+    color: $terminal-text-dim;
+  }
 }
 
 /* Content Area */
 .page__content {
   font-size: 1em;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: $terminal-text;
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Press Start 2P', cursive !important;
-    color: $minecraft-dark;
-    border-bottom: 3px solid $minecraft-grass;
-    padding-bottom: 0.5em;
-    margin-top: 1.5em;
+    font-family: 'Fira Code', monospace !important;
+    color: $terminal-cyan;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: 1px dashed $terminal-border;
+    padding-bottom: 0.3em;
   }
 
-  h2 { font-size: 0.9em; }
-  h3 { font-size: 0.8em; }
-  h4 { font-size: 0.7em; }
+  h1::before { content: "# "; color: $terminal-text-dim; }
+  h2::before { content: "## "; color: $terminal-text-dim; }
+  h3::before { content: "### "; color: $terminal-text-dim; }
+  h4::before { content: "#### "; color: $terminal-text-dim; }
+
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.15em; }
+  h4 { font-size: 1.05em; }
 
   p {
     margin-bottom: 1.5em;
   }
 
   a {
-    color: $minecraft-grass;
+    color: $terminal-cyan;
     text-decoration: none;
-    border-bottom: 2px dashed $minecraft-grass;
+    border-bottom: 1px dashed $terminal-cyan;
+    transition: all 0.2s;
 
     &:hover {
-      color: $minecraft-emerald;
+      color: $terminal-green;
+      border-bottom-color: $terminal-green;
       border-bottom-style: solid;
+    }
+  }
+
+  strong {
+    color: $terminal-yellow;
+    font-weight: 600;
+  }
+
+  em {
+    color: $terminal-purple;
+  }
+
+  ul, ol {
+    li::marker {
+      color: $terminal-green;
     }
   }
 }
 
-/* Code Blocks - Stone Block Style */
+/* Code Blocks - Terminal Style */
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  background: $terminal-bg-light !important;
+  border: 1px solid $terminal-border !important;
+
+  &::before {
+    content: "●  ●  ●";
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    font-size: 10px;
+    color: $terminal-text-dim;
+    letter-spacing: 4px;
+  }
+}
+
 pre, code {
-  font-family: 'VT323', monospace !important;
-  background: linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 100%) !important;
-  color: #FFFFFF !important;
-  border: 3px solid #5B5B5B !important;
-  box-shadow:
-    inset 2px 2px 0 rgba(255,255,255,0.2),
-    inset -2px -2px 0 rgba(0,0,0,0.2),
-    3px 3px 0 rgba(0,0,0,0.3);
+  font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+  background: $terminal-bg-light !important;
+  color: $terminal-text !important;
+  border: none !important;
 }
 
 pre {
-  padding: 1em !important;
+  padding: 2em 1em 1em 1em !important;
+  border-radius: 6px !important;
+  overflow-x: auto;
+
+  code {
+    background: transparent !important;
+    padding: 0 !important;
+  }
 }
 
 code {
-  padding: 0.2em 0.4em !important;
-  font-size: 1em !important;
+  padding: 0.2em 0.5em !important;
+  font-size: 0.9em !important;
+  color: $terminal-orange !important;
+  background: $terminal-bg-lighter !important;
+  border-radius: 3px !important;
 }
 
-/* Blockquote - Sign Style */
+/* Inline code in content */
+.page__content code {
+  color: $terminal-orange !important;
+}
+
+/* Blockquote - Terminal Comment Style */
 blockquote {
-  background: $minecraft-wood !important;
-  border-left: 6px solid darken($minecraft-wood, 20%) !important;
-  color: #FFF !important;
+  background: $terminal-bg-light !important;
+  border-left: 3px solid $terminal-green !important;
+  color: $terminal-text-dim !important;
   padding: 1em 1.5em !important;
   font-style: normal !important;
-  box-shadow:
-    inset 2px 2px 0 rgba(255,255,255,0.1),
-    3px 3px 0 rgba(0,0,0,0.3);
 
-  &:before {
-    content: "📜 ";
+  &::before {
+    content: "/* ";
+    color: $terminal-text-dim;
+  }
+
+  &::after {
+    content: " */";
+    color: $terminal-text-dim;
+  }
+
+  p {
+    display: inline;
+    margin: 0;
   }
 }
 
 /* Sidebar / Author Profile */
 .sidebar {
+  background: $terminal-bg-light;
+
   .author__avatar {
-    border: 4px solid $minecraft-grass !important;
-    box-shadow: 4px 4px 0 $minecraft-dirt;
+    border: 2px solid $terminal-green !important;
 
     img {
-      image-rendering: pixelated;
+      filter: grayscale(20%);
     }
   }
 
   .author__name {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 0.7em !important;
-    color: $minecraft-dark;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 1em !important;
+    color: $terminal-green;
+
+    &::before {
+      content: "@";
+      color: $terminal-text-dim;
+    }
   }
 
   .author__bio {
-    font-size: 0.95em;
+    font-size: 0.85em;
+    color: $terminal-text-dim;
+
+    &::before {
+      content: "// ";
+      color: $terminal-text-dim;
+    }
   }
 
   .author__urls {
     a {
       background: transparent !important;
-      color: $minecraft-dark !important;
-      padding: 0.15em 0.3em;
-      margin: 0.1em 0;
-      display: block;
-      border: none;
-      box-shadow: none;
-      font-size: 0.9em;
-      border-left: 3px solid transparent;
+      color: $terminal-text !important;
+      padding: 0.3em 0.5em;
+      font-size: 0.85em;
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
 
       &:hover {
-        background: rgba($minecraft-grass, 0.1) !important;
-        color: $minecraft-grass !important;
-        border-left: 3px solid $minecraft-grass;
-        transform: none;
-        box-shadow: none;
+        background: $terminal-bg-lighter !important;
+        color: $terminal-cyan !important;
+        border-left-color: $terminal-cyan;
       }
     }
 
     .svg-inline--fa {
-      width: 1em;
-      margin-right: 0.3em;
-      color: $minecraft-grass;
+      color: $terminal-green;
     }
   }
 }
 
-/* Buttons - Minecraft Button Style */
+/* Buttons - Terminal Command Style */
 .btn,
 .pagination--pager,
 button,
 input[type="submit"] {
-  font-family: 'VT323', monospace !important;
-  font-size: 1em !important;
-  background: linear-gradient(180deg, #8B8B8B 0%, #6B6B6B 50%, #5B5B5B 50%, #4B4B4B 100%) !important;
-  color: white !important;
-  border: 3px solid #2B2B2B !important;
-  padding: 0.5em 1em !important;
-  text-shadow: 2px 2px 0 #3F3F3F;
-  box-shadow:
-    inset 2px 2px 0 rgba(255,255,255,0.3),
-    inset -2px -2px 0 rgba(0,0,0,0.3);
-  transition: all 0.1s;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.9em !important;
+  background: $terminal-bg-lighter !important;
+  color: $terminal-text !important;
+  border: 1px solid $terminal-border !important;
+  padding: 0.5em 1.2em !important;
+  transition: all 0.2s;
 
-  &:hover {
-    background: linear-gradient(180deg, #6B8BC9 0%, #5070A0 50%, #4060A0 50%, #3050A0 100%) !important;
-    color: $minecraft-gold !important;
-    transform: translate(1px, 1px);
+  &::before {
+    content: "> ";
+    color: $terminal-green;
   }
 
-  &:active {
-    transform: translate(2px, 2px);
-    box-shadow:
-      inset -2px -2px 0 rgba(255,255,255,0.3),
-      inset 2px 2px 0 rgba(0,0,0,0.3);
+  &:hover {
+    background: $terminal-bg-light !important;
+    color: $terminal-green !important;
+    border-color: $terminal-green !important;
   }
 }
 
 /* Archive Items / Post List */
 .archive__item {
-  background: #FFF;
-  border: 3px solid $minecraft-dirt;
-  padding: 1em;
+  background: $terminal-bg-light;
+  border: 1px solid $terminal-border;
+  padding: 1.2em;
   margin-bottom: 1em;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
   transition: all 0.2s;
 
   &:hover {
-    border-color: $minecraft-grass;
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+    border-color: $terminal-green;
+
+    .archive__item-title a {
+      color: $terminal-green !important;
+    }
   }
 
   .archive__item-title {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 0.7em !important;
-    line-height: 1.6;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 1em !important;
+    line-height: 1.5;
+
+    &::before {
+      content: "→ ";
+      color: $terminal-green;
+    }
 
     a {
+      color: $terminal-cyan !important;
       border-bottom: none !important;
+
+      &:hover {
+        color: $terminal-green !important;
+      }
+    }
+  }
+
+  .archive__item-excerpt {
+    color: $terminal-text-dim;
+    font-size: 0.9em;
+  }
+
+  .page__meta {
+    color: $terminal-text-dim;
+    font-size: 0.8em;
+
+    &::before {
+      content: "$ stat ";
+      color: $terminal-green;
     }
   }
 }
 
 /* TOC - Table of Contents */
 .toc {
-  background: #FFF;
-  border: 3px solid $minecraft-grass !important;
-  box-shadow: 4px 4px 0 $minecraft-dirt;
+  background: $terminal-bg-light;
+  border: 1px solid $terminal-border !important;
 
   .toc__title {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 0.6em !important;
-    background: $minecraft-grass;
-    color: white;
-    padding: 0.5em;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 0.85em !important;
+    background: $terminal-bg-lighter;
+    color: $terminal-green;
+    padding: 0.7em 1em;
+    border-bottom: 1px solid $terminal-border;
+
+    &::before {
+      content: "$ cat ";
+    }
   }
 
-  a {
-    font-size: 1em;
-    border-bottom: none !important;
+  .toc__menu {
+    a {
+      font-size: 0.85em;
+      color: $terminal-text;
+      border-bottom: none !important;
+      padding: 0.3em 0;
 
-    &:hover {
-      color: $minecraft-emerald;
+      &:hover {
+        color: $terminal-cyan;
+      }
+
+      &::before {
+        content: "├─ ";
+        color: $terminal-text-dim;
+        font-size: 0.8em;
+      }
+    }
+
+    li:last-child > a::before {
+      content: "└─ ";
     }
   }
 }
 
 /* Tags */
 .page__taxonomy-item {
-  background: $minecraft-diamond !important;
-  color: $minecraft-dark !important;
-  border: 2px solid darken($minecraft-diamond, 20%) !important;
-  font-family: 'VT323', monospace !important;
+  background: $terminal-bg-lighter !important;
+  color: $terminal-cyan !important;
+  border: 1px solid $terminal-border !important;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.8em;
   padding: 0.2em 0.6em;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  transition: all 0.2s;
+
+  &::before {
+    content: "#";
+    color: $terminal-text-dim;
+  }
 
   &:hover {
-    background: $minecraft-gold !important;
+    background: $terminal-bg-light !important;
+    border-color: $terminal-cyan !important;
   }
 }
 
 /* Footer */
 .page__footer {
-  background: linear-gradient(180deg, $minecraft-stone 0%, darken($minecraft-stone, 20%) 100%);
-  border-top: 4px solid $minecraft-dirt;
-  color: white;
+  background: $terminal-bg-light;
+  border-top: 1px solid $terminal-border;
+  color: $terminal-text-dim;
+
+  &::before {
+    content: "$ echo 'EOF'";
+    display: block;
+    color: $terminal-green;
+    margin-bottom: 1em;
+    font-family: 'Fira Code', monospace;
+  }
 
   a {
-    color: $minecraft-gold !important;
+    color: $terminal-cyan !important;
 
     &:hover {
-      color: white !important;
+      color: $terminal-green !important;
     }
   }
 }
 
 /* Search */
 .search__toggle {
-  color: white !important;
+  color: $terminal-text !important;
 
   &:hover {
-    color: $minecraft-gold !important;
+    color: $terminal-green !important;
   }
 }
 
 .search-content {
+  background: $terminal-bg;
+
   .search-input {
-    font-family: 'VT323', monospace !important;
-    font-size: 1.3em;
-    border: 3px solid $minecraft-grass !important;
-    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.1);
+    font-family: 'Fira Code', monospace !important;
+    font-size: 1em;
+    background: $terminal-bg-light;
+    border: 1px solid $terminal-border !important;
+    color: $terminal-text;
+
+    &::placeholder {
+      color: $terminal-text-dim;
+    }
+
+    &:focus {
+      border-color: $terminal-green !important;
+    }
   }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .site-title {
-    font-size: 0.7em !important;
-  }
-
-  .page__title {
-    font-size: 0.9em !important;
-  }
-
-  .page__content h2 {
-    font-size: 0.7em;
-  }
-}
-
-/* Fun Minecraft Cursor (optional - uncomment to enable) */
-/*
-body {
-  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect x="8" y="0" width="4" height="4" fill="%23FFF"/><rect x="12" y="4" width="4" height="4" fill="%23FFF"/><rect x="16" y="8" width="4" height="4" fill="%23FFF"/><rect x="20" y="12" width="4" height="4" fill="%23FFF"/><rect x="12" y="16" width="4" height="4" fill="%23FFF"/><rect x="8" y="20" width="4" height="4" fill="%23FFF"/><rect x="4" y="24" width="4" height="4" fill="%23FFF"/></svg>'), auto;
-}
-*/
-
-/* Achievement-style notifications for hover */
-.archive__item:hover::after {
-  content: "⛏️";
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 1.5em;
-}
-
-.archive__item {
-  position: relative;
 }
 
 /* Sidebar Navigation - Category Menu */
 .nav__list {
   .nav__title {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 0.5em !important;
-    background: $minecraft-grass;
-    color: white;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 0.8em !important;
+    background: $terminal-bg-lighter;
+    color: $terminal-green;
     padding: 0.8em 1em;
     margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: 1px solid $terminal-border;
+    border-bottom: none;
+
+    &::before {
+      content: "📁 ";
+    }
   }
 
   .nav__items {
-    background: #FFF;
-    border: 3px solid $minecraft-dirt;
+    background: $terminal-bg-light;
+    border: 1px solid $terminal-border;
     border-top: none;
     padding: 0;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
 
     .nav__sub-title {
-      font-family: 'VT323', monospace !important;
-      font-size: 1.1em;
-      color: $minecraft-dark;
-      background: lighten($minecraft-dirt, 40%);
+      font-family: 'Fira Code', monospace !important;
+      font-size: 0.9em;
+      color: $terminal-yellow;
+      background: $terminal-bg-lighter;
       padding: 0.5em 1em;
       margin: 0;
-      border-bottom: 2px solid $minecraft-dirt;
+      border-bottom: 1px solid $terminal-border;
 
-      &:before {
-        content: "📦 ";
+      &::before {
+        content: "📂 ";
       }
     }
 
     li {
       a {
-        font-family: 'VT323', monospace !important;
-        font-size: 1em;
-        color: $minecraft-text;
+        font-family: 'Fira Code', monospace !important;
+        font-size: 0.85em;
+        color: $terminal-text;
         padding: 0.4em 1em 0.4em 1.5em;
         display: block;
-        border-left: 3px solid transparent;
+        border-left: 2px solid transparent;
         transition: all 0.15s;
 
         &:hover {
-          background: rgba($minecraft-grass, 0.1);
-          color: $minecraft-grass;
-          border-left-color: $minecraft-grass;
+          background: $terminal-bg-lighter;
+          color: $terminal-cyan;
+          border-left-color: $terminal-cyan;
         }
 
-        &:before {
-          content: "▸ ";
-          color: $minecraft-stone;
+        &::before {
+          content: "─ ";
+          color: $terminal-text-dim;
         }
 
-        &:hover:before {
+        &:hover::before {
           content: "▶ ";
-          color: $minecraft-grass;
+          color: $terminal-cyan;
         }
       }
 
       &.active a {
-        background: rgba($minecraft-grass, 0.15);
-        color: $minecraft-grass;
-        border-left-color: $minecraft-grass;
-        font-weight: bold;
+        background: $terminal-bg-lighter;
+        color: $terminal-green;
+        border-left-color: $terminal-green;
       }
     }
   }
@@ -483,15 +627,17 @@ body {
 /* Category Archive Page */
 .taxonomy__section {
   .taxonomy__title {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 0.7em !important;
-    background: linear-gradient(90deg, $minecraft-grass, transparent);
-    color: white;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 1em !important;
+    background: $terminal-bg-light;
+    color: $terminal-cyan;
     padding: 0.5em 1em;
     margin: 1.5em 0 0.5em;
+    border-left: 3px solid $terminal-green;
 
-    &:before {
-      content: "🗂️ ";
+    &::before {
+      content: "ls -la ";
+      color: $terminal-green;
     }
   }
 }
@@ -499,21 +645,159 @@ body {
 /* Tags Page */
 .taxonomy__index {
   a {
-    font-family: 'VT323', monospace !important;
-    background: $minecraft-diamond;
-    color: $minecraft-dark !important;
-    padding: 0.3em 0.6em;
+    font-family: 'Fira Code', monospace !important;
+    background: $terminal-bg-lighter;
+    color: $terminal-cyan !important;
+    padding: 0.3em 0.8em;
     margin: 0.2em;
     display: inline-block;
-    border: 2px solid darken($minecraft-diamond, 15%);
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    border: 1px solid $terminal-border;
     transition: all 0.15s;
 
+    &::before {
+      content: "#";
+      color: $terminal-text-dim;
+    }
+
     &:hover {
-      background: $minecraft-gold;
-      border-color: darken($minecraft-gold, 15%);
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      background: $terminal-bg-light;
+      border-color: $terminal-cyan;
+    }
+  }
+}
+
+/* Blinking Cursor Effect for Headers */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.page__title::after {
+  content: "_";
+  animation: blink 1s infinite;
+  color: $terminal-green;
+}
+
+/* Selection Color */
+::selection {
+  background: $terminal-green;
+  color: $terminal-bg;
+}
+
+::-moz-selection {
+  background: $terminal-green;
+  color: $terminal-bg;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $terminal-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $terminal-border;
+  border-radius: 4px;
+
+  &:hover {
+    background: $terminal-text-dim;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 0.9em !important;
+  }
+
+  .page__title {
+    font-size: 1.2em !important;
+  }
+
+  .page__content h2 {
+    font-size: 1.1em;
+  }
+}
+
+/* Terminal Prompt Animation on Load */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Notice/Alert boxes - Terminal style */
+.notice,
+.notice--primary,
+.notice--info,
+.notice--warning,
+.notice--success,
+.notice--danger {
+  background: $terminal-bg-light !important;
+  border: 1px solid $terminal-border !important;
+  border-left: 3px solid $terminal-green !important;
+  color: $terminal-text !important;
+  font-family: 'Fira Code', monospace !important;
+
+  &::before {
+    content: "[INFO] ";
+    color: $terminal-green;
+    font-weight: 600;
+  }
+}
+
+.notice--warning {
+  border-left-color: $terminal-yellow !important;
+
+  &::before {
+    content: "[WARN] ";
+    color: $terminal-yellow;
+  }
+}
+
+.notice--danger {
+  border-left-color: $terminal-red !important;
+
+  &::before {
+    content: "[ERROR] ";
+    color: $terminal-red;
+  }
+}
+
+.notice--success {
+  border-left-color: $terminal-green !important;
+
+  &::before {
+    content: "[OK] ";
+    color: $terminal-green;
+  }
+}
+
+/* Page Meta (date, read time, etc.) */
+.page__meta {
+  color: $terminal-text-dim;
+  font-size: 0.85em;
+
+  .page__meta-sep {
+    &::before {
+      content: " | ";
+    }
+  }
+}
+
+/* Related Posts */
+.page__related {
+  border-top: 1px solid $terminal-border;
+
+  .page__related-title {
+    font-family: 'Fira Code', monospace !important;
+    color: $terminal-green;
+
+    &::before {
+      content: "$ find . -related ";
     }
   }
 }
