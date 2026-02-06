@@ -362,7 +362,7 @@ description: Spring Boot 프로젝트 코드 리뷰. "리뷰해줘", "이 코드
 
 #### 예제: Conventional Commit 스킬
 
-```yaml
+~~~yaml
 # .claude/skills/java-commit/SKILL.md
 ---
 name: java-commit
@@ -375,11 +375,8 @@ disable-model-invocation: true
 staged 변경사항을 분석하여 Conventional Commits 형식으로 메시지를 생성한다.
 
 ### 형식
-```
-<type>(<scope>): <description>
-
-[optional body]
-```
+  <type>(<scope>): <description>
+  [optional body]
 
 ### Type 분류
 | type | 사용 시점 |
@@ -393,20 +390,20 @@ staged 변경사항을 분석하여 Conventional Commits 형식으로 메시지�
 | build | 빌드/의존성 변경 (pom.xml, build.gradle) |
 
 ### Scope 규칙
-- 모듈명 사용: `core`, `api`, `common`, `batch`
+- 모듈명 사용: core, api, common, batch
 - 없으면 생략 가능
 
 ### 자바 프로젝트 특화 규칙
-- pom.xml이나 build.gradle 변경 → type은 `build`
+- pom.xml이나 build.gradle 변경 → type은 build
 - application.yml/properties 변경 → 관련 기능의 type 따라감
 - Entity 변경 → body에 "DB 마이그레이션 필요 여부" 명시
-- 테스트만 추가 → `test` (feat이 아님)
+- 테스트만 추가 → test (feat이 아님)
 
 ### 절차
-1. `git diff --staged` 읽기
+1. git diff --staged 읽기
 2. 변경 분석 후 커밋 메시지 초안 작성
-3. 사용자에게 보여주고 **승인 후에만** 커밋 실행
-```
+3. 사용자에게 보여주고 승인 후에만 커밋 실행
+~~~
 
 `disable-model-invocation: true`를 설정했다. 커밋은 사용자가 직접 `/java-commit`으로 호출할 때만 실행된다. Claude가 코드 수정 중에 멋대로 커밋하는 일은 없다.
 
