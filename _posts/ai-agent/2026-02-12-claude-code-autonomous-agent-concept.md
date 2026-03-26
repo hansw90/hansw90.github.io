@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 자율 에이전트 (1) - 잠자는 동안 코드가 쌓이는 원리"
 date: 2026-02-12 10:00:00 +0900
-categories: OTHERS
+categories: AI-AGENT
 tags: [claude, ai, autonomous-agent, agentic-loop, context-window, anthropic-research]
 excerpt: "Claude Code는 할 일이 끝나면 멈춘다. 그런데 멈추지 않고 밤새 코드를 짜게 만들 수 있다면? Anthropic 연구 원문을 직접 파헤치며, 자율 에이전트의 설계 원리를 검증해봤다."
 toc: true

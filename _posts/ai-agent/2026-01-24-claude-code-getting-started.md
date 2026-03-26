@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 시작하기 - 터미널에서 AI와 함께 코딩하기"
 date: 2026-01-24 09:00:00 -0000
-categories: OTHERS
+categories: AI-AGENT
 tags: [claude, ai, coding, cli, productivity]
 excerpt: "터미널을 떠나지 않고 AI와 협업하는 방법, Claude Code를 파헤쳐 봤다"
 toc: true

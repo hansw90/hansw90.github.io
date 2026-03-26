@@ -1,7 +1,7 @@
 ---
 title: "Claude Code Skills 파헤치기 - 프롬프트 복붙 지옥에서 탈출하는 법"
 date: 2026-02-04 10:00:00 +0900
-categories: OTHERS
+categories: AI-AGENT
 tags: [claude, ai, skills, automation, productivity]
 excerpt: "반복되는 프롬프트 입력에 지쳤다면, Skills가 답이다. 토큰도 아끼고, 일관성도 챙기는 마법 같은 구조를 파헤쳐 봤다."
 toc: true

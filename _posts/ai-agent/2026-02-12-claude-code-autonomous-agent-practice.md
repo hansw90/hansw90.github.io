@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 자율 에이전트 (2) - Ralph Wiggum과 Motlin 플러그인 실전 가이드"
 date: 2026-02-12 14:00:00 +0900
-categories: OTHERS
+categories: AI-AGENT
 tags: [claude, ai, autonomous-agent, ralph-wiggum, motlin, claude-code-plugins, puppeteer, cost-management]
 excerpt: "Ralph Wiggum과 Craig Motlin의 markdown-tasks 플러그인을 직접 클론해서 소스코드를 까봤다. 설치부터 실행, 안전장치까지 실전 사용법을 정리한다."
 toc: true

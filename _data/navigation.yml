@@ -27,6 +27,8 @@ categories:
         url: /categories/graphdb/
   - title: "AI & Data"
     children:
+      - title: "AI-Agent"
+        url: /categories/ai-agent/
       - title: "NLP"
         url: /categories/nlp/
   - title: "Others"

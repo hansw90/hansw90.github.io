@@ -1,7 +1,7 @@
 ---
 title: "자바 개발자의 Claude Code 세팅 - 스킬로 나만의 AI 페어 프로그래머 만들기"
 date: 2026-02-06 10:00:00 +0900
-categories: OTHERS
+categories: AI-AGENT
 tags: [claude, ai, java, spring-boot, skills, developer-tools, productivity]
 excerpt: "Claude Code에 자바 DNA를 심어보자. Skills 구조를 활용해 코드 리뷰부터 Spring Boot 패턴까지, 자바 생태계에 최적화된 AI 개발 환경을 구축한다."
 toc: true
