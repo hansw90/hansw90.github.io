@@ -1,0 +1,12 @@
+{
+  "description": "이미 블로그에 게시한 YouTube 영상 ID 목록. 중복 게시 방지용.",
+  "posted": [
+    {
+      "id": "qMnClynCAmM",
+      "title": "The Next Evolution of AI Coding Is Harnesses - Here's How to Build Them",
+      "channel": "Cole Medin",
+      "posted_date": "2026-04-14",
+      "blog_slug": "harness-engineering-ai-coding-archon"
+    }
+  ]
+}

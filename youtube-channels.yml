@@ -1,0 +1,53 @@
+# YouTube 채널 모니터링 목록
+# Claude Code 스케줄이 이 파일을 읽고 최신 영상을 확인합니다.
+
+channels:
+  # --- Claude Code / MCP 집중 ---
+  - name: "Cole Medin"
+    url: "https://www.youtube.com/@ColeMedin"
+    topics: ["claude-code", "mcp", "ai-agent-architecture", "archon"]
+    priority: 1
+
+  - name: "All About AI"
+    url: "https://www.youtube.com/@AllAboutAI"
+    topics: ["claude-code", "mcp", "ai-automation"]
+    priority: 1
+
+  - name: "IndyDevDan"
+    url: "https://www.youtube.com/@IndyDevDan"
+    topics: ["claude-code", "aider", "ai-coding"]
+    priority: 1
+
+  - name: "Nate Herk"
+    url: "https://www.youtube.com/@NateHerk"
+    topics: ["claude-code", "n8n", "mcp", "automation"]
+    priority: 2
+
+  - name: "NetworkChuck"
+    url: "https://www.youtube.com/@NetworkChuck"
+    topics: ["ai-terminal", "claude-code", "self-hosted"]
+    priority: 2
+
+  # --- AI Agent / LLM Engineering ---
+  - name: "AI Jason"
+    url: "https://www.youtube.com/@AIJason"
+    topics: ["llm-apps", "agent-frameworks", "langchain", "crewai"]
+    priority: 1
+
+  - name: "Sam Witteveen"
+    url: "https://www.youtube.com/@samwitteveen"
+    topics: ["llm-api", "rag", "langgraph", "gemini"]
+    priority: 2
+
+  - name: "Dave Ebbelaar"
+    url: "https://www.youtube.com/@daveebbelaar"
+    topics: ["production-agents", "rag", "ai-engineering"]
+    priority: 2
+
+  # --- 심층 분석 ---
+  - name: "Yannic Kilcher"
+    url: "https://www.youtube.com/@YannicKilcher"
+    topics: ["ai-papers", "architecture", "research"]
+    priority: 3
+
+# priority: 1 = 매일 확인, 2 = 격일, 3 = 주 1회
